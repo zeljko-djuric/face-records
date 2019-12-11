@@ -1,5 +1,6 @@
 import face_recognition
 import os
+import re
 
 directory = "./img/known"
 
@@ -14,4 +15,6 @@ for filename in os.listdir(directory):
         result = face_recognition.compare_faces(
             [known_encoding], unknown_encoding)
         if result[0]:
-            print("We have a matching!")
+            f = open("./img/known/" + re.split(r"\.", filename)[0]+".txt", "r")
+            print(f.read())
+            f.close()
