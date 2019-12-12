@@ -26,12 +26,11 @@ for filename in os.listdir(directory):
                 "Do you want to add information for unknown person? yes/no\n")
             if answer == "yes":
                 f = open("new.txt", "a")
-                name = input("Full name: ")
-                f.write(name+"\n")
-                title = input("Title: ")
-                f.write(title+"\n")
-                net_worth = input("Net worth: ")
-                f.write(net_worth+"\n")
+                info = input(
+                    "When you're done with input enter end\nEnter data for new person:\n")
+                while(info != "end"):
+                    f.write(info+"\n")
+                    info = input()
                 f.close()
             else:
                 print("End")
