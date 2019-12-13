@@ -2,6 +2,8 @@ import face_recognition
 import os
 import sys
 import re
+from PIL import Image
+import PIL
 
 data = "./data"
 unknown_image = face_recognition.load_image_file("./photos/someone3.jpg")
@@ -31,7 +33,9 @@ if(answer == "yes"):
         f.write(info+"\n")
         info = input()
     f.close()
+    im1 = Image.open(r"./photos/someone3.jpg")
+    im1 = im1.save(data+"/"+name+".jpg")
 elif (answer == "no"):
-    print("Gotovo")
+    print("END")
 else:
-    print("Niste uneli ispravnu komandu")
+    print("Invalid arguments")
