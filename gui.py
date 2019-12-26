@@ -62,6 +62,8 @@ def register_new_person():
     Label(window1, text="Phone: ").grid(row=8)
     Label(window1, text="Adress: ").grid(row=10)
     Label(window1, text="Note: ").grid(row=12)
+    Label(window1, text="File Name: ").grid(row=14)
+
     e1 = Entry(window1)
     e1.grid(row=1)
     e2 = Entry(window1)
@@ -76,17 +78,23 @@ def register_new_person():
     e6.grid(row=11)
     e7 = Entry(window1)
     e7.grid(row=13)
+    file_name = Entry(window1)
+    file_name.grid(row=15)
 
-    def profit_calculator():
-        print(e1.get())
-        print(e2.get())
-        print(e3.get())
-        print(e4.get())
-        print(e5.get())
-        print(e6.get())
-        print(e7.get())
-    button_calc = Button(window1, text="Calculate", command=profit_calculator)
-    button_calc.grid(row=14)
+    def save_person():
+        f_name = file_name.get()
+        f = open(
+            "/home/zeljko/Workspace/met/Skripting jezici/face_records/data/"+f_name+".txt", "a")
+        f.write(e1.get()+"\n")
+        f.write(e2.get()+"\n")
+        f.write(e3.get()+"\n")
+        f.write(e4.get()+"\n")
+        f.write(e5.get()+"\n")
+        f.write(e6.get()+"\n")
+        f.write(e7.get()+"\n")
+        f.close()
+    button_calc = Button(window1, text="Save", command=save_person)
+    button_calc.grid(row=16)
 
 
 btn = Button(window, text="Upload photo", command=OpenFile)
