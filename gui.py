@@ -19,7 +19,7 @@ lbl.grid(column=0, row=0)
 
 def OpenFile():
     name = askopenfilename(initialdir="/home/zeljko/Workspace/met/Skripting jezici/face_records/photos",
-                           filetypes=(("Text File", "*.jpg"),
+                           filetypes=(("Image File", "*.jpg"),
                                       ("All Files", "*.*")),
                            title="Choose a file."
                            )
@@ -45,6 +45,9 @@ def OpenFile():
         'Unknown person', 'Do you want to register this person?', icon='warning')
     if MsgBox == 'yes':
         register_new_person()
+        im1 = Image.open(name)
+        im1 = im1.save(
+            "/home/zeljko/Workspace/met/Skripting jezici/face_records/data/"+re.split(r"/", name)[-1])
 
     else:
         messagebox.showinfo(
