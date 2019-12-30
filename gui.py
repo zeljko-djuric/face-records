@@ -47,8 +47,8 @@ def OpenFile():
         register_new_person(name)
 
     else:
-        messagebox.showinfo(
-            'END', 'END')
+        messagebox.showinfo("INFO",
+                            "Thank You for using my software. Have a nice day!")
 
 
 def register_new_person(name):
