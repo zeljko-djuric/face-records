@@ -19,7 +19,7 @@ lbl.grid(column=0, row=0)
 
 def OpenFile():
     name = askopenfilename(initialdir="/home/zeljko/Workspace/met/Skripting jezici/face_records/photos",
-                           filetypes=(("Image File", "*.jpg"),
+                           filetypes=(("JPEG Image", "*.jpg"),
                                       ("All Files", "*.*")),
                            title="Choose a file."
                            )
@@ -44,17 +44,14 @@ def OpenFile():
     MsgBox = messagebox.askquestion(
         'Unknown person', 'Do you want to register this person?', icon='warning')
     if MsgBox == 'yes':
-        register_new_person()
-        im1 = Image.open(name)
-        im1 = im1.save(
-            "/home/zeljko/Workspace/met/Skripting jezici/face_records/data/"+re.split(r"/", name)[-1])
+        register_new_person(name)
 
     else:
         messagebox.showinfo(
             'END', 'END')
 
 
-def register_new_person():
+def register_new_person(name):
     window1 = Tk()
     window1.title("New window for data update")
     window1.geometry('400x450')
@@ -96,6 +93,9 @@ def register_new_person():
         f.write(e6.get()+"\n")
         f.write(e7.get()+"\n")
         f.close()
+        im1 = Image.open(name)
+        im1 = im1.save(
+            "/home/zeljko/Workspace/met/Skripting jezici/face_records/data/"+f_name+".jpg")
     button_calc = Button(window1, text="Save", command=save_person)
     button_calc.grid(row=16)
 
