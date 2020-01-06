@@ -17,7 +17,7 @@ lbl = Label(window, text="Upload photo of unknown person",
 lbl.grid(column=0, row=0)
 
 
-def OpenFile():
+def find_person():
     name = askopenfilename(initialdir="/home/zeljko/Workspace/met/Skripting jezici/face_records/photos",
                            filetypes=(("JPEG Image", "*.jpg"),
                                       ("All Files", "*.*")),
@@ -100,6 +100,6 @@ def register_new_person(name):
     button_calc.grid(row=16)
 
 
-btn = Button(window, text="Upload photo", command=OpenFile)
+btn = Button(window, text="Upload photo", command=find_person)
 btn.place(relx=0.5, rely=0.5, anchor=CENTER)
 window.mainloop()
